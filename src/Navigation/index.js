@@ -15,13 +15,13 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
    return (
       <Stack.Navigator>
-        {/* <Stack.Screen name="SplashScreenOne"
+      {/* <Stack.Screen name="SplashScreenOne"
 component={SplashScreenOne}
 options={{headerShown: false}}
 />
 <Stack.Screen name="SplashScreenTwo"
-component={SplashScreenTwo}/>
-       <Stack.Screen
+component={SplashScreenTwo}/> */}
+         <Stack.Screen
           name="EnterPickerlocation"
           component={EnterPickerlocation}
           options={{headerShown: false}}
@@ -35,11 +35,12 @@ component={SplashScreenTwo}/>
           name="AddMorePickerlocation"
           component={AddMorePickerlocation}
           options={{headerShown: false}}
-        /> */}
+        /> 
         {/* <Stack.Screen name="AddMoreInputField" component={AddMoreInputField}
                   options={{headerShown: false}}/> */}
- <Stack.Screen name="MapPinLocation" component={MapPinLocation}
-  options={{headerShown: false}}/> 
+ {/* <Stack.Screen name="MapPinLocation" 
+ component={MapPinLocation}
+  options={{headerShown: false}}/>  */}
 
 
 {/* <Stack.Screen name="Mapping"
