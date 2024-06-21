@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingVertical: 30,
+   width:'75%',
         alignSelf:'center',
         // marginHorizontal:10
     
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         color:'white'
     },
     textInputStyle: {
-        width: 50,
+        width: 45,
         height: 50,
         borderBottomWidth: 1,
         borderBottomColor: 'white',
@@ -137,9 +137,9 @@ const styles = StyleSheet.create({
         color:colors.purpleblue,
         justifyContent:'flex-start',
         paddingHorizontal:wp(2),
+        paddingVertical:hp(3),
         fontSize:17,
         fontWeight:'500'
-
     }
   });
 

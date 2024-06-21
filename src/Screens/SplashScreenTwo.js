@@ -19,7 +19,7 @@ const SplashScreenTwo = ({ navigation }) => {
       </View>
       <View style={styles.btnView}>
         <CustomButton
-          onPress={() => navigation.navigate('EnterPickerlocation')}
+          onPress={() => navigation.navigate('LoginScreen')}
           title="Get Started"
           iconName="arrow-forward"
         />

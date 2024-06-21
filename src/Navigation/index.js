@@ -10,48 +10,44 @@ import AddMoreInputField from '../Screens/AcessMaplocation/AddMoreInputField';
 import MapPinLocation from '../Screens/AcessMaplocation/MapPinLocation';
 import SplashScreenOne from '../Screens/SplashScreenOne';
 import SplashScreenTwo from '../Screens/SplashScreenTwo';
-import Mapping from '../Screens/Mapping';
+import MoreDetails from '../Screens/AcessMaplocation/MoreDetails'
 const Stack = createNativeStackNavigator();
 const Navigation = () => {
    return (
       <Stack.Navigator>
-      {/* <Stack.Screen name="SplashScreenOne"
-component={SplashScreenOne}
-options={{headerShown: false}}
-/>
-<Stack.Screen name="SplashScreenTwo"
-component={SplashScreenTwo}/> */}
-         <Stack.Screen
-          name="EnterPickerlocation"
-          component={EnterPickerlocation}
-          options={{headerShown: false}}
-        />
-         <Stack.Screen
+       <Stack.Screen name="SplashScreenOne"
+       component={SplashScreenOne}
+       options={{headerShown: false}}
+       />
+     <Stack.Screen name="SplashScreenTwo"
+     component={SplashScreenTwo}/> 
+     <Stack.Screen
+     name="EnterPickerlocation"
+     component={EnterPickerlocation}
+     options={{headerShown: false}}
+     />
+     <Stack.Screen
           name="PickSaveLocation"
           component={PickSaveLocation}
           options={{headerShown: false}}
-        /> 
+        />  
          <Stack.Screen
           name="AddMorePickerlocation"
           component={AddMorePickerlocation}
           options={{headerShown: false}}
         /> 
-        {/* <Stack.Screen name="AddMoreInputField" component={AddMoreInputField}
-                  options={{headerShown: false}}/> */}
- {/* <Stack.Screen name="MapPinLocation" 
+        <Stack.Screen name="AddMoreInputField" component={AddMoreInputField}
+                  options={{headerShown: false}}/> 
+ <Stack.Screen name="MapPinLocation" 
  component={MapPinLocation}
-  options={{headerShown: false}}/>  */}
+  options={{headerShown: false}}/>  
 
 
-{/* <Stack.Screen name="Mapping"
-component={Mapping}
-options={{headerShown: true}}/> */}
-
-
-
-
-
-        {/* <Stack.Screen
+<Stack.Screen name="MoreDetails"
+component={MoreDetails}
+options={{headerShown: false}} />
+ 
+ <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
           options={{headerShown: false}}
@@ -66,12 +62,11 @@ options={{headerShown: true}}/> */}
           component={firstlastname}
           options={{headerShown: false}}
         />
-        */}
-          {/* <Stack.Screen
+       <Stack.Screen
           name="TermAndPolicy"
           component={TermAndPolicy}
           options={{headerShown: false}}
-        />   */}
+        />   
        
 
        

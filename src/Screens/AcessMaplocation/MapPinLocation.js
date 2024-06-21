@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -54,7 +55,7 @@ const MapPinLocation = ({ navigation }) => {
               placeholder="Enter Picker Point 3"
               onChangeText={newText => setPickerPoint3(newText)}
               value={pickerPoint3}
-              style={[styles.inputStyle, { marginTop: hp(2) }]}
+              style={styles.inputStyle}
               placeholderTextColor={'gray'}
             />
           </View>
@@ -69,8 +70,7 @@ const MapPinLocation = ({ navigation }) => {
             longitude: -122.4324,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
-          }}
-        >
+          }}>
           <Marker
             draggable
             coordinate={source}
@@ -101,7 +101,7 @@ const MapPinLocation = ({ navigation }) => {
 
       <View style={styles.btnView}>
         <CustomButton
-          onPress={() => navigation.navigate('AddMoreInputField')}
+          // onPress={() => navigation.navigate('AddMoreInputField')}
           title="Next"
         />
       </View>
@@ -185,5 +185,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp(5)
   },
 });
-
 export default MapPinLocation;

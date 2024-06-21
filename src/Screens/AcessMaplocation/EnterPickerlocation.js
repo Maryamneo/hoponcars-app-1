@@ -10,7 +10,12 @@ import MapView, { Marker } from 'react-native-maps';
 import CustomButton from '../../components/CustomButton';
 const EnterPickerLocation = ({ navigation }) => {
   const [text, setText] = useState('');
-
+  const [currentLocation, setCurrentLocation] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
   // const mapStyle = [
   //   { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
   //   { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
@@ -91,7 +96,23 @@ const EnterPickerLocation = ({ navigation }) => {
   //     stylers: [{ color: '#17263c' }],
   //   },
   // ];
-
+  useEffect(() => {
+    // Fetch current location using Geolocation API
+    Geolocation.getCurrentPosition(
+      position => {
+        const { latitude, longitude } = position.coords;
+        setCurrentLocation({
+          ...currentLocation,
+          latitude,
+          longitude,
+        });
+      },
+      error => {
+        Alert.alert('Error', JSON.stringify(error));
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+    );
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.viewOne}>
@@ -125,26 +146,26 @@ const EnterPickerLocation = ({ navigation }) => {
       </View>
 
       <View style={styles.mapView}>
-        <MapView
-          style={styles.mapStyle}
-          initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: currentLocation.latitude,
+          longitude: currentLocation.longitude,
+          latitudeDelta: currentLocation.latitudeDelta,
+          longitudeDelta: currentLocation.longitudeDelta,
+        }}
+      >
+        <Marker
+          draggable
+          coordinate={{
+            latitude: currentLocation.latitude,
+            longitude: currentLocation.longitude,
           }}
-        >
-          <Marker
-            draggable
-            coordinate={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-            }}
-            onDragEnd={(e) => alert(JSON.stringify(e.nativeEvent.coordinate))}
-            title={'Test Marker'}
-            description={'This is a description of the marker'}
-          />
-        </MapView>
+          onDragEnd={handleMarkerDragEnd}
+          title={'Draggable Marker'}
+          description={'Drag this marker to change location'}
+        />
+      </MapView>
       </View>
 
       <View style={styles.btnView}>
