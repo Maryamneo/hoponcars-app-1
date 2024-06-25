@@ -112,7 +112,11 @@ const EnterMorePickerlocation = ({ navigation }) => {
        placeholderTextColor={'gray'}
        onFocus={() => navigation.navigate('PickSaveLocation')}
        />
+       <TouchableOpacity onPress={()=>navigation.navigate('AddMoreInputField')}>
        <Text style={styles.textStyle}>+Via Point</Text>
+       </TouchableOpacity>
+
+      
         <TextInput placeholder="Where to?" 
        onChangeText={newText => setText(newText)}
        defaultValue={text}

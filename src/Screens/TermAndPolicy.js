@@ -7,13 +7,13 @@ import {
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
 import { colors } from '../Constants/index';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import CustomButton from '../components/CustomButton';
 const TermAndPolicy = ({ navigation }) => {
   return (
 
       <View style={styles.container}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back" size={24}  style={styles.arrowStyle} />
+            <Ionicons name="arrow-back" size={24} color={"gray"}  style={styles.arrowStyle} />
           </TouchableOpacity>
      <View style={styles.secView}>
        <View style={styles.imgView}>
@@ -31,11 +31,13 @@ const TermAndPolicy = ({ navigation }) => {
   </View>
  </View>
      
-     <View style={styles.btnView}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-        <Text style={styles.buttonText}>Next</Text>
-        </TouchableOpacity>
-        </View>
+ <View style={styles.btnView}>
+                 <CustomButton
+                 onPress={() => navigation.navigate('MapPinLocation')}
+                 title="Next"
+                 />
+    
+                </View>
     </View>
     
   );
@@ -53,21 +55,23 @@ container: {
    flex:1,
 // backgroundColor:'red'
     },
-    imgView:{
-      marginTop:hp(5),
-height:hp(30),
-width:wp(30),
-// backgroundColor:'green',
-alignSelf:'center',
-justifyContent:'center'
+    imgView: {
+      marginTop: hp(5),
+      height: hp(30),
+      width: wp(60),
+      // backgroundColor: 'green',
+      alignSelf: 'center',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     arrowStyle: {
       marginRight: 'auto',
-      color:Colors.lightGray
+      // color:Colors.lightGray
     },
     btnView: {
       justifyContent: 'flex-end',
       alignItems: 'center',
+      marginBottom:hp(3)
     },
     button: {
       backgroundColor: '#000000',
@@ -82,7 +86,7 @@ justifyContent:'center'
       fontSize: 18,
     },
     textStyle:{
-      fontSize:17,
+      fontSize:15,
       color:'#EDF6FF',
       fontWeight:'400',
       alignSelf:'center'
@@ -91,10 +95,11 @@ justifyContent:'center'
       flex:1,width:wp(90),
       justifyContent:'center',
       alignSelf:'center',
-      // backgroundColor:'gray'
+      //  backgroundColor:'gray'
     },
-    imgStyle:{
-      height:hp(20),width:wp(34),marginTop:10
+    imgStyle: {
+      height: hp(20),
+      width: wp(40),
     },
     termStyle:{
       color:colors.purpleblue

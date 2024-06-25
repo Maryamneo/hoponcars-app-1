@@ -8,7 +8,7 @@ import {
 } from "react-native-responsive-screen";
 import { CountryPickerInput } from '../components/CountryPickerInput';
 import { colors } from '../Constants/index';
-
+import CustomButton from '../components/CustomButton';
 const LoginScreen = ({ navigation }) => {
     const [countryNameCode, setCountryNameCode] = useState('GB');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -21,31 +21,32 @@ const LoginScreen = ({ navigation }) => {
 
  return (
     <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#1A1A1A' }}>
-         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-            <View>
-               <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Ionicons name="arrow-back" size={24} color="white" style={styles.arrowStyle} />
-                    </TouchableOpacity>
-                    <Text style={styles.title}>Enter your mobile number</Text>
-                    <View style={styles.inputContainer}>
-                        <CountryPickerInput
-                            countryNameCode={countryNameCode}
-                            callingCode={callingCode}
-                            onSelect={onCountrySelect}
-                            value={phoneNumber}
-                            onChangeText={setPhoneNumber}
-                        />
-                    </View>
+        <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+        <View>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="gray" style={styles.arrowStyle} />
+        </TouchableOpacity>
+        <Text style={styles.title}>Enter your mobile number</Text>
+            <View style={styles.inputContainer}>
+                <CountryPickerInput
+                 countryNameCode={countryNameCode}
+                 callingCode={callingCode}
+                 onSelect={onCountrySelect}
+                 value={phoneNumber}
+                 onChangeText={setPhoneNumber}
+                 />
+            </View>
                 </View>
+                <Text style={styles.textStyle}>
+                    By continuing you may recieve an SMS for
+                    verification. Message and data rates may apply.</Text>
+                 
                 <View style={styles.btnView}>
-                    <Text style={styles.textStyle}>By continuing you may recieve an SMS for
-                                   verification. Message and data rates may apply.</Text>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate('NumberVerify')}
-                    >
-                        <Text style={styles.buttonText}>Next</Text>
-                    </TouchableOpacity>
+                 <CustomButton
+                 onPress={() => navigation.navigate('NumberVerify')}
+                 title="Next"
+                 />
+    
                 </View>
             </KeyboardAwareScrollView>
         </KeyboardAvoidingView>
@@ -79,6 +80,7 @@ const styles = StyleSheet.create({
     btnView: {
         justifyContent: 'flex-end',
         alignItems: 'center',
+        marginBottom:hp(3)
     },
     button: {
         backgroundColor: '#000000',
@@ -87,15 +89,18 @@ const styles = StyleSheet.create({
         marginTop: 40,
         alignItems: 'center',
         width: '100%',
+
+        
     },
     buttonText: {
         color: 'white',
         fontSize: 18,
     },
     textStyle:{
-        marginTop:hp(10),
-        fontSize:17,
-        color:colors.White
+        marginTop:hp(40),
+        fontSize:16,
+        color:colors.White,
+        fontWeight:'500'
     }
 });
 

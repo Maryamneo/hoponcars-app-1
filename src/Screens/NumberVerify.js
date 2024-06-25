@@ -8,6 +8,7 @@ import {
   } from "react-native-responsive-screen";
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { colors } from '../Constants/index';
+import CustomButton from '../components/CustomButton';
 const NameScreen = ({ navigation }) => {
     const [otp, setOTP] = useState(['', '', '', '']);
     const otpTextInputRefs = useRef([]);
@@ -25,40 +26,44 @@ const NameScreen = ({ navigation }) => {
     };
   return (
 
-    <KeyboardAvoidingView style={{ flex: 1,backgroundColor:'red' }}>
+    <KeyboardAvoidingView style={{ flex: 1 }}>
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
         <View>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back" size={24} color="white" style={styles.arrowStyle} />
+            <Ionicons name="arrow-back" size={24} color="gray" style={styles.arrowStyle} />
           </TouchableOpacity>
           <Text style={styles.title}>Enter the 4-digit code sent to {'\n'}you at </Text>
           <Text style={styles.phonestyle}>+44 7397047724</Text>
           <View style={styles.inputContainer}>
               {otp.map((digit, index) => (
                    <TextInput
-                       placeholder="-"
-                        key={index}
-                        ref={ref => (otpTextInputRefs.current[index] = ref)}
-                        style={styles.textInputStyle}
-                        value={digit}
-                        color={'white'}
-                        fontSize={20}
-                        onChangeText={text => handleOTPChange(index, text)}
-                         keyboardType="numeric"
-                         maxLength={1}
-                            />
-                        ))}
-                    </View>
-
-                    <Text style={styles.resendStyle}>Resend Code</Text>
+                     placeholder="-"
+                    key={index}
+                    ref={ref => (otpTextInputRefs.current[index] = ref)}
+                    style={styles.textInputStyle}
+                    value={digit}
+                    color={'white'}
+                    fontSize={20}
+                    onChangeText={text => handleOTPChange(index, text)}
+                    keyboardType="numeric"
+                    maxLength={1}
+                    />
+                    ))}
+           </View>
+       <Text style={styles.receiveStyle}>
+       Dont't recieve a code? <Text style={styles.resendStyle}>Resend Code</Text>
+       </Text>
+                   
         </View>
         <View style={styles.btnView}>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TermAndPolicy')}>
-            <Text style={styles.buttonText}>Next</Text>
-          </TouchableOpacity>
-        </View>
-      </KeyboardAwareScrollView>
-    </KeyboardAvoidingView>
+                 <CustomButton
+                 onPress={() => navigation.navigate('firstlastname')}
+                 title="Next"
+                 />
+    
+                </View>
+       </KeyboardAwareScrollView>
+     </KeyboardAvoidingView>
   );
 };
 
@@ -83,11 +88,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingVertical: 30,
-        alignSelf:'center',
-        // marginHorizontal:10
-    
-        
+        paddingVertical: hp(5),
+        width:wp(90), 
     },
  
     input: {
@@ -104,6 +106,7 @@ const styles = StyleSheet.create({
     btnView: {
       justifyContent: 'flex-end',
       alignItems: 'center',
+      marginBottom:hp(3)
     },
     button: {
       backgroundColor: '#000000',
@@ -122,8 +125,8 @@ const styles = StyleSheet.create({
         color:'white'
     },
     textInputStyle: {
-        width: 50,
-        height: 50,
+        width: 60,
+        height: 60,
         borderBottomWidth: 1,
         borderBottomColor: 'white',
         borderRadius: 5,
@@ -131,16 +134,23 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'white',
         // backgroundColor: '#333',
-         marginHorizontal: 26,
+         marginHorizontal: wp(4),
     },
     resendStyle:{
         color:colors.purpleblue,
         justifyContent:'flex-start',
-        paddingHorizontal:wp(2),
-        fontSize:17,
-        fontWeight:'500'
-
-    }
+        // paddingHorizontal:wp(2),
+        fontSize:16,
+        fontWeight:'500',
+        textDecorationLine:'underline',
+    },
+    receiveStyle:
+    {
+    flexDirection:'row',
+    color:colors.White,
+    fontSize:15,
+    paddingHorizontal:wp(2)
+  }
   });
 
 export default NameScreen;

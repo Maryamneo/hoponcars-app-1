@@ -52,13 +52,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         marginLeft:wp(3),
-        //  borderWidth: 0.8,
-        // borderTopLeftRadius: 15,
-        // borderBottomRightRadius: 15,
-        //  borderBottomColor: '#293170',
         paddingHorizontal: wp(3),
         marginTop: hp(1.5),
-        // backgroundColor: 'white',
+
     },
     countryCodeContainer: {
         flexDirection: 'row',
@@ -74,10 +70,11 @@ const styles = StyleSheet.create({
     },
     phoneInputText: {
         flex: 1,
-        color: 'black',
+        color: colors.White,
         fontSize: 16,
         marginLeft: wp('2%'),
-        borderBottomWidth:1
-        // backgroundColor: 'white',
+        borderBottomWidth:1,
+        borderBottomColor:colors.gray
+        
     },
 });

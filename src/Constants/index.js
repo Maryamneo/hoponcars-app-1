@@ -14,7 +14,7 @@ import {
     black: "#000000",
     ElectricBlue: "#67EFFF",
     green: "#39FF14",
-    red: "#FF0000",
+    // red: "#FF0000",
     gray: "#979797",
     MediumBlue: "#0218C3",
     purpleblue:'#535AFF',

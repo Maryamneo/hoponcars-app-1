@@ -6,14 +6,15 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from "react-native-responsive-screen";
+  import CustomButton from '../components/CustomButton';
 const NameScreen = ({ navigation }) => {
   return (
 
-    <KeyboardAvoidingView style={{ flex: 1,backgroundColor:'red' }}>
+    <KeyboardAvoidingView style={{ flex: 1 }}>
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
         <View>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back" size={24} color="white" style={styles.arrowStyle} />
+            <Ionicons name="arrow-back" size={24} color="gray" style={styles.arrowStyle} />
           </TouchableOpacity>
           <Text style={styles.title}>What's your name?</Text>
            <View style={styles.inputContainer}> 
@@ -22,10 +23,12 @@ const NameScreen = ({ navigation }) => {
           </View>
         </View>
         <View style={styles.btnView}>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TermAndPolicy')}>
-            <Text style={styles.buttonText}>Next</Text>
-          </TouchableOpacity>
-        </View>
+                 <CustomButton
+                 onPress={() => navigation.navigate('TermAndPolicy')}
+                 title="Next"
+                 />
+    
+                </View>
       </KeyboardAwareScrollView>
     </KeyboardAvoidingView>
   );
@@ -68,6 +71,7 @@ const styles = StyleSheet.create({
     btnView: {
       justifyContent: 'flex-end',
       alignItems: 'center',
+      marginBottom:hp(3)
     },
     button: {
       backgroundColor: '#000000',

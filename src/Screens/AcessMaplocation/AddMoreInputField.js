@@ -29,14 +29,14 @@ const AddMoreInputField = ({ navigation }) => {
            <View style={styles.rectangle} />
          </View>
          <View style={{flexDirection:'column',width:wp(90),backgroundColor:'transparent'}}>
-   <TextInput placeholder="Enter Picker Point" 
+   <TextInput placeholder="Enter Source Point 1" 
        onChangeText={newText => setText(newText)}
        defaultValue={text}
        style={styles.inputStyle}
        placeholderTextColor={'gray'}
        onFocus={() => navigation.navigate('PickSaveLocation')}
        />
-        <TextInput placeholder="Enter Picker Point" 
+        <TextInput placeholder="Enter Source Point 2" 
        onChangeText={newText => setText(newText)}
        defaultValue={text}
        style={styles.inputStyle}
@@ -44,7 +44,7 @@ const AddMoreInputField = ({ navigation }) => {
        onFocus={() => navigation.navigate('PickSaveLocation')}
        />
    <Text style={styles.textStyle}>+Via Point</Text>
-        <TextInput placeholder="Enter Picker Point" 
+        <TextInput placeholder="Where to?" 
        onChangeText={newText => setText(newText)}
        defaultValue={text}
        style={[styles.inputStyle,{marginTop:hp(2)}]}
@@ -75,7 +75,7 @@ const AddMoreInputField = ({ navigation }) => {
     </View>
 
 </View>
-<View style={styles.btnView}>
+     <View style={styles.btnView}>
         <CustomButton
           onPress={() => navigation.navigate('MapPinLocation')}
           title="Confirm Destination"
