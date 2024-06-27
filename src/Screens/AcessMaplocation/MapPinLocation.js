@@ -251,6 +251,8 @@
 // });
 
 // export default MapPinLocation;
+
+
 import React, { useEffect, useRef, useState } from 'react';
 import { View, StyleSheet, SafeAreaView, Dimensions, TouchableOpacity } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
@@ -268,15 +270,14 @@ const LATITUDE_DELTA = 0.04;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const GOOGLE_PLACES_API_KEY = 'AIzaSyBEpezNDENEaLW4Hog5yW5D-YIa5mbBCMA'; // Replace with your Google Places API key
 
-
-
 const MapPinLocation = ({ navigation }) => {
   const mapRef = useRef();
   const [coord, setCoord] = useState(null);
   const [destination, setDestination] = useState(null);
   const [pickerPoint1, setPickerPoint1] = useState('');
   const [pickerPoint2, setPickerPoint2] = useState('');
-console.log("line :277 " , pickerPoint1);
+  const [initialLocationSet, setInitialLocationSet] = useState(false);
+
   const onPressAddress = (data, details = null, isPicker1 = true) => {
     const location = {
       latitude: details.geometry.location.lat,
@@ -285,9 +286,7 @@ console.log("line :277 " , pickerPoint1);
 
     if (isPicker1) {
       setCoord(location);
-      getAddressFromCoords(location.latitude, location.longitude)
-        .then(address => setPickerPoint1(address))
-        .catch(error => console.error('Error fetching address:', error));
+      setPickerPoint1(data.description);
     } else {
       setDestination(location);
       setPickerPoint2(data.description);
@@ -343,9 +342,9 @@ console.log("line :277 " , pickerPoint1);
           longitudeDelta: LONGITUDE_DELTA,
         };
         setCoord(location);
-        getAddressFromCoords(latitude, longitude)
-          .then(address => setPickerPoint1(address))
-          .catch(error => console.error('Error fetching address:', error));
+        const address = await getAddressFromCoords(latitude, longitude);
+        setPickerPoint1(address);
+        setInitialLocationSet(true);
       },
       error => console.log(error),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
@@ -353,16 +352,17 @@ console.log("line :277 " , pickerPoint1);
   };
 
   useEffect(() => {
-    getLiveLocation();
-  }, []);
+    if (!initialLocationSet) {
+      getLiveLocation();
+    }
+  }, [initialLocationSet]);
 
   useEffect(() => {
     if (coord && destination) {
       adjustMapToShowBothMarkers(coord, destination);
     }
-    console.log(coord , destination);
-  }, [1]);
-
+  }, [coord, destination]);
+console.log('coord',coord)
   return (
     <SafeAreaView style={styles.container}>
       <MapView
@@ -372,7 +372,8 @@ console.log("line :277 " , pickerPoint1);
         initialRegion={coord}
       >
         {coord && (
-          <Marker coordinate={coord} image={require('../../Images/Designer.png')} />
+          <Marker coordinate={coord} pinColor={"green"} />
+          
         )}
         {destination && (
           <Marker coordinate={destination} pinColor={"red"} />
@@ -398,11 +399,12 @@ console.log("line :277 " , pickerPoint1);
             placeholder="Enter Picker Point 1"
             fetchDetails={true}
             onPress={(data, details = null) => onPressAddress(data, details, true)}
-            enablePoweredByContainer={false}
             query={{
               key: GOOGLE_PLACES_API_KEY,
               language: 'en',
             }}
+            currentLocation={true}
+            currentLocationLabel="Current Location"
             styles={{
               container: styles.autocompleteContainer,
               textInputContainer: styles.textInputContainer,
@@ -411,13 +413,10 @@ console.log("line :277 " , pickerPoint1);
               description: styles.description,
               predefinedPlacesDescription: styles.predefinedPlacesDescription,
             }}
-            
-            onChangeText={text => setPickerPoint1(text)} // Handle text change
             textInputProps={{
               placeholderTextColor: colors.gray,
+              value: pickerPoint1,
               onChangeText: text => setPickerPoint1(text),
-
-              value : pickerPoint1,
             }}
           />
         </View>
@@ -441,20 +440,23 @@ console.log("line :277 " , pickerPoint1);
               predefinedPlacesDescription: styles.predefinedPlacesDescription,
             }}
             textInputProps={{
-              placeholderTextColor: colors.gray
+              placeholderTextColor: colors.gray,
+              value: pickerPoint2,
+              onChangeText: text => setPickerPoint2(text),
             }}
           />
         </View>
       </View>
       <View style={styles.btnView}>
         <CustomButton
-          onPress={() => navigation.navigate('AddMoreInputField')}
+          onPress={() => navigation.navigate('Cars')}
           title="Next"
         />
       </View>
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -520,22 +522,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.greish,
     marginLeft: wp(6.2),
-    marginTop: hp(3)
+    marginTop: hp(3),
   },
   line: {
-        height: hp(10),
-        width: wp(0.4),
-        backgroundColor: colors.greish,
-        marginLeft: wp(9.5),
-        marginTop:hp(3)
-      },
-      rectangle: {
-        width: hp(1.3),
-        height: hp(1.3),
-        backgroundColor: colors.greish,
-        marginLeft: wp(6.3),
-        marginTop:hp(3)
-      },
-    });
-    
-    export default MapPinLocation;
+    height: hp(10),
+    width: wp(0.4),
+    backgroundColor: colors.greish,
+    marginLeft: wp(9.5),
+    marginTop: hp(3),
+  },
+  rectangle: {
+    width: hp(1.3),
+    height: hp(1.3),
+    backgroundColor: colors.greish,
+    marginLeft: wp(6.3),
+    marginTop: hp(3),
+  },
+});
+
+export default MapPinLocation;

@@ -23,12 +23,11 @@ const NameScreen = ({ navigation }) => {
           </View>
         </View>
         <View style={styles.btnView}>
-                 <CustomButton
-                 onPress={() => navigation.navigate('TermAndPolicy')}
-                 title="Next"
-                 />
-    
-                </View>
+             <CustomButton
+             onPress={() => navigation.navigate('TermAndPolicy')}
+             title="Next"
+             />
+      </View>
       </KeyboardAwareScrollView>
     </KeyboardAvoidingView>
   );
