@@ -18,6 +18,11 @@ const SelectPaymentMethod = ({ navigation }) => {
         <Image source={require('../Images/Cash.png')} style={styles.imgStyle} />
         <Text style={styles.text}>Pay by Cash</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.box} onPress={()=>navigation.navigate('PayByDebit')}>
+        <Image source={require('../Images/Cash.png')} style={styles.imgStyle} />
+        <Text style={styles.text}>Pay by Credit or Debit Card</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -48,7 +53,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: wp(4),
+    marginVertical:hp(1),
     borderRadius: 10,
+    borderColor:colors.White,
+    borderWidth:1
 
   },
   imgStyle: {

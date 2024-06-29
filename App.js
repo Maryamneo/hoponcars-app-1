@@ -1,22 +1,17 @@
-
-
 import React from 'react';
 import Navigation from './src/Navigation/index';
-import {SafeAreaView} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
- 
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import store from './src/ReduxStore/store'; // Adjust the path to your store file
 
-const App=()=>{
-  return(
-   
-    <SafeAreaView style={{flex: 1}}>
-    <NavigationContainer>
-    <Navigation />
-  </NavigationContainer>
-  </SafeAreaView>
-
-  )
-}
-
+const App = () => {
+  return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
+    </Provider>
+  );
+};
 
 export default App;

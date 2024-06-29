@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: wp(5),
     backgroundColor: colors.lightblack,
+    // margin:hp(5)
   },
   title: {
     fontSize: fontSize.medium,
@@ -94,6 +95,9 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.bold,
     color: colors.White,
   },
+  btnView:{
+    marginBottom:hp(5)
+  }
 });
 
 export default PayByCash;

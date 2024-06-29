@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import {Text, StyleSheet, View, Image} from 'react-native';
 import {colors, fontSize} from '../Constants';
-
+import CustomButton from '../components/CustomButton';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 const SuccessfullPayment = () => {
   return (
     <View style={styles.container}>
@@ -11,6 +15,13 @@ const SuccessfullPayment = () => {
       <View style={styles.txtContainer}>
         <Text style={styles.txt1}>Our Team Contact Back You Soon</Text>
         <Text style={styles.txt2}>Thank you for using Hoponcars</Text>
+      </View>
+      <View style={styles.btnView}>
+        <CustomButton
+          onPress={() => navigation.navigate('LoginScreen')}
+          title="Get Started"
+         
+        />
       </View>
     </View>
   );
@@ -43,6 +54,12 @@ const styles = StyleSheet.create({
     fontSize: fontSize.statusSize,
     fontSize:18
   },
+  btnView: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom:hp(6)
+},
+
 });
 
 export default SuccessfullPayment;

@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { colors } from '../Constants/index';
+import { colors, fontFamily } from '../Constants/index';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import  CustomButton from '../components/CustomButton'
 const SplashScreenTwo = ({ navigation }) => {
@@ -19,7 +19,7 @@ const SplashScreenTwo = ({ navigation }) => {
       </View>
       <View style={styles.btnView}>
         <CustomButton
-          onPress={() => navigation.navigate('LoginScreen')}
+          onPress={() => navigation.navigate('firstlastname')}
           title="Get Started"
           iconName="arrow-forward"
         />
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   textStyle: {
     fontSize: wp(5),
     color: colors.White,
+   
   },
   arrowStyle: {
   },

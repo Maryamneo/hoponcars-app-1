@@ -25,10 +25,18 @@ const TermAndPolicy = ({ navigation }) => {
       </Text>
    </View>
 
-  <View style={styles.textView}>
-   <Text style={[styles.textStyle,{justifyContent:'flex-end',marginTop:47}]}>
-     Check the box to indicate that you are atleast 18 years of age, agree to the <Text style={styles.termStyle}>Terms & Conditions</Text> and acknowledge the <Text style={styles.termStyle}>Privacy Policy</Text>.</Text>
-  </View>
+   <View style={styles.textView}>
+        <Text style={styles.textStyle}>
+          Check the box to indicate that you are at least 18 years of age, agree to the{' '}
+          <TouchableOpacity onPress={() => openURL('https://example.com/terms')}>
+            <Text style={styles.termStyle}>Terms & Conditions</Text>
+          </TouchableOpacity>
+          and acknowledge the
+          <TouchableOpacity onPress={() => openURL('https://example.com/privacy')}>
+            <Text style={styles.termStyle}>Privacy Policy</Text>
+          </TouchableOpacity>.
+        </Text>
+      </View>
  </View>
      
  <View style={styles.btnView}>
