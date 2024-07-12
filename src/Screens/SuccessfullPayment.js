@@ -6,7 +6,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-const SuccessfullPayment = () => {
+const SuccessfullPayment = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.imgContainer}>
@@ -19,7 +19,7 @@ const SuccessfullPayment = () => {
       <View style={styles.btnView}>
         <CustomButton
           onPress={() => navigation.navigate('LoginScreen')}
-          title="Get Started"
+          title="Finished"
          
         />
       </View>

@@ -1,2 +1,6 @@
+// actionTypes.js
 export const SET_PICKER_POINT1 = 'SET_PICKER_POINT1';
 export const SET_PICKER_POINT2 = 'SET_PICKER_POINT2';
+export const PHONE_NUMBER = 'PHONE_NUMBER';
+export const SET_SELECTED_ITEMS = 'SET_SELECTED_ITEMS';
+export const SET_TOTAL_AMOUNT = 'SET_TOTAL_AMOUNT';

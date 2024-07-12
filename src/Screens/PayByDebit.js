@@ -4,7 +4,7 @@ import { colors, radius, fontSize, fontFamily } from '../Constants/index';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CustomButton from '../components/CustomButton';
-const PayByCash = () => {
+const PayByCash = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -41,7 +41,7 @@ const PayByCash = () => {
       </View>
       <View style={styles.btnView}>
                  <CustomButton
-                 onPress={() => navigation.navigate('TermAndPolicy')}
+                 onPress={() => navigation.navigate('SuccessfullPayment')}
                  title="Next"
                  />
     
